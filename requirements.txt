@@ -1,0 +1,6 @@
+streamlit
+pandas
+numpy
+requests
+pytrends
+GoogleNews
