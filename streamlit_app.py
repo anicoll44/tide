@@ -10,7 +10,6 @@ from GoogleNews import GoogleNews
 st.set_page_config(layout="wide")
 
 #Build sidebar and set request paramaeters
-timeframe = "now 7-d"
 
 kw = st.sidebar.text_input('Enter a Target Keyword', '', type = 'default')
 kw_list = [kw]
@@ -35,6 +34,27 @@ elif timeframe == 'Past 12 Months':
   timeframe = 'today 12-m'
 elif timeframe == 'Past 5 Years':
   timeframe = 'today 5-y'
+
+rising_query_timeframe = st.sidebar.selectbox(
+     'Rising Query Timeframe',
+     ("Past 1 Hour", "Past 4 Hours", "Past 24 Hours", "Past 7 Days", "Past 30 Days", "Past 90 Days", "Past 12 Months", "Past 5 Years"), index = 3)
+
+if rising_query_timeframe == "Past 7 Days":
+  rising_query_timeframe = "now 7-d"
+elif rising_query_timeframe == 'Past 1 Hour':
+  rising_query_timeframe = 'now 1-H'
+elif rising_query_timeframe == 'Past 4 Hours':
+  rising_query_timeframe = 'now 4-H'
+elif rising_query_timeframe == 'Past 24 Hours':
+  rising_query_timeframe = 'now 1-d'
+elif rising_query_timeframe == 'Past 30 Days':
+  rising_query_timeframe = 'today 1-m'
+elif rising_query_timeframe == 'Past 90 Days':
+  rising_query_timeframe = 'today 3-m'
+elif rising_query_timeframe == 'Past 12 Months':
+  rising_query_timeframe = 'today 12-m'
+elif rising_query_timeframe == 'Past 5 Years':
+  rising_query_timeframe = 'today 5-y'
 
 number_of_related_queries = st.sidebar.slider('# of Related Keywords', min_value=0, max_value=4, value=2, help='The number of top related keywords to return and compare against your target keyword')
 
