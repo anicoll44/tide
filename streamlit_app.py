@@ -25,7 +25,7 @@ kw_list.extend(top_related_list)
 
 #get interest over time
 pytrends.build_payload(kw_list, cat=0, timeframe = timeframe, geo = 'US')
-interest_o_time_df = pytrend.interest_over_time()
+interest_o_time_df = pytrends.interest_over_time()
 interest_o_time_df = interest_o_time_df.drop(columns=['isPartial'])
 
 st.line_chart(data=interest_o_time_df)
