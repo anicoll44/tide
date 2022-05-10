@@ -12,7 +12,9 @@ number_of_related_queries = 3
 kw = st.text_input('Enter a Keyword', None, type = 'default')
 kw_list = [kw]
 
-if kw is not None:
+get_data_button = st.button('Get Google Trends Data')
+
+if get_data_button:
   pytrends = TrendReq()
   pytrends.build_payload(kw_list, cat=0, timeframe = timeframe, geo = 'US')
 
