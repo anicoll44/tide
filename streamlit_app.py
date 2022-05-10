@@ -94,5 +94,5 @@ if get_data_button:
   #get rising queries
   rising_df = list(related_queries.values())[0]['rising']
   rising_df = rising_df.reset_index(drop=True)
-  rising_df.rename(columns={"query": "Keyword", "value": "% Increase"})
+  rising_df = rising_df.rename(columns={"query": "Keyword", "value": "% Increase"})
   st.dataframe(data=rising_df)
