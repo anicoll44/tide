@@ -6,6 +6,8 @@ import numpy as np
 import requests
 from GoogleNews import GoogleNews
 
+st.set_page_config(layout="wide")
+
 # build request parameters
 timeframe = "now 7-d"
 number_of_related_queries = 3
