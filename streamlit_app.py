@@ -14,8 +14,7 @@ number_of_related_queries = 3
 
 if kw is not None:
   #build model
-  kw_list = []
-  kw_list.append(kw)
+  kw_list = [kw]
   pytrend = TrendReq()
   pytrend.build_payload(kw_list, cat=0, timeframe = timeframe, geo = 'US')
 
