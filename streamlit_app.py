@@ -105,8 +105,8 @@ if get_data_button:
      
   with col2:
      trending_df = pytrends.trending_searches(pn='united_states')
-     trending_df = trending_df.rename(columns={0: "trending keyword"})
-     trending_df['rank'] = trending_df.index + 1
+     trending_df = trending_df.rename(columns={0: "Keyword"})
+     trending_df['Rank'] = trending_df.index + 1
      
      st.subheader('Trending Keywords')
      st.dataframe(data=trending_df)
