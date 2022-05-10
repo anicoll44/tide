@@ -89,7 +89,7 @@ if get_data_button:
   interest_o_time_df = pytrends.interest_over_time()
   interest_o_time_df = interest_o_time_df.drop(columns=['isPartial'])
   
-  st.sub_header('Interest Over Time')
+  st.subheader('Interest Over Time')
   st.line_chart(data=interest_o_time_df)
   
   #get rising queries
@@ -97,5 +97,5 @@ if get_data_button:
   rising_df = rising_df.reset_index(drop=True)
   rising_df = rising_df.rename(columns={"query": "Keyword", "value": "% Increase"})
   
-  st.sub_header('Rising Related Keywords')
+  st.subheader('Rising Related Keywords')
   st.dataframe(data=rising_df)
