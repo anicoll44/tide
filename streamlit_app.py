@@ -68,8 +68,7 @@ number_of_related_queries = st.sidebar.slider('# of Related Keywords', min_value
 number_of_related_news = st.sidebar.slider('# of Related News Articles', min_value=0, max_value=4, value= 2, help='The number of related news articles to return for your target and related keywords')
 
 #Button to trigger getting google trends data
-if len(kw) >0:
-     get_data_button = st.sidebar.button('Get Google Trends Data')
+get_data_button = st.sidebar.button('Get Google Trends Data')
 
 #Get Google trends data
 if get_data_button:
