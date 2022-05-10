@@ -10,9 +10,11 @@ st.set_page_config(layout="wide")
 
 # build request parameters
 timeframe = "now 7-d"
-number_of_related_queries = 3
+
 kw = st.sidebar.text_input('Enter a Keyword', None, type = 'default')
 kw_list = [kw]
+
+number_of_related_queries = st.sidebar.slider('# of Related Queries', min_value=0, max_value=4, value=2)
 
 get_data_button = st.sidebar.button('Get Google Trends Data')
 
