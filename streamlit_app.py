@@ -15,6 +15,37 @@ timeframe = "now 7-d"
 kw = st.sidebar.text_input('Enter a Target Keyword', '', type = 'default')
 kw_list = [kw]
 
+timeframe = st.sidebar.selectbox(
+     'Timeframe',
+     ("Past 1 Hour", "Past 4 Hours", "Past 24 Hours", "Past 7 Days", "Past 30 Days", "Past 90 Days", "Past 12 Months", "Past 5 Years"))
+
+if timeframe == "Past 7 Days":
+  timeframe = "now 7-d"
+  st.write('Successfully set timeframe at Past 7 Days')
+elif timeframe == 'Past 1 Hour':
+  timeframe = 'now 1-H'
+  st.write('Successfully set timeframe at Past 1 Hour')
+elif timeframe == 'Past 4 Hours':
+  timeframe = 'now 4-H'
+  st.write('Successfully set timeframe at Past 4 Hours')
+elif timeframe == 'Past 24 Hours':
+  timeframe = 'now 1-d'
+  st.write('Successfully set timeframe at Past 24 Hours')
+elif timeframe == 'Past 30 Days':
+  timeframe = 'today 1-m'
+  st.write('Successfully set timeframe at Past 30 Days')
+elif timeframe == 'Past 90 Days':
+  timeframe = 'today 3-m'
+  st.write('Successfully set timeframe at Past 90 Days')
+elif timeframe == 'Past 12 Months':
+  timeframe = 'today 12-m'
+  st.write('Successfully set timeframe at Past 12 Months')
+elif timeframe == 'Past 5 Years':
+  timeframe = 'today 5-y'
+  st.write('Successfully set timeframe at Past 5 Years')
+else:
+  st.write('Successfully set timeframe at', timeframe)
+
 number_of_related_queries = st.sidebar.slider('# of Related Keywords', min_value=0, max_value=4, value=2, help='The number of top related keywords to return and compare against your target keyword')
 
 get_data_button = st.sidebar.button('Get Google Trends Data')
