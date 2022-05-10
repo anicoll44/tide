@@ -88,11 +88,14 @@ if get_data_button:
   pytrends.build_payload(kw_list, cat=0, timeframe = timeframe, geo = 'US')
   interest_o_time_df = pytrends.interest_over_time()
   interest_o_time_df = interest_o_time_df.drop(columns=['isPartial'])
-
+  
+  st.caption('Interest Over Time')
   st.line_chart(data=interest_o_time_df)
   
   #get rising queries
   rising_df = list(related_queries.values())[0]['rising']
   rising_df = rising_df.reset_index(drop=True)
   rising_df = rising_df.rename(columns={"query": "Keyword", "value": "% Increase"})
+  
+  st.caption('Rising Related Keywords')
   st.dataframe(data=rising_df)
