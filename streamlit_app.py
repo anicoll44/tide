@@ -21,7 +21,7 @@ related_queries.values()
 #build kw list that includes provided and related top queries
 top_df = list(related_queries.values())[0]['top'].head(number_of_related_queries)
 top_related_list = top_df['query'].tolist()
-kw_list.append(top_related_list)
+kw_list.extend(top_related_list)
 
 #get interest over time
 pytrends.build_payload(kw_list, cat=0, timeframe = timeframe, geo = 'US')
