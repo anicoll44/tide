@@ -9,10 +9,10 @@ from GoogleNews import GoogleNews
 # build request parameters
 timeframe = "now 7-d"
 number_of_related_queries = 3
-kw = st.text_input('Enter a Keyword', None, type = 'default')
+kw = st.sidebar.text_input('Enter a Keyword', None, type = 'default')
 kw_list = [kw]
 
-get_data_button = st.button('Get Google Trends Data')
+get_data_button = st.sidebar.button('Get Google Trends Data')
 
 if get_data_button:
   pytrends = TrendReq()
