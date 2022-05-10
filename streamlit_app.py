@@ -17,7 +17,7 @@ kw_list = [kw]
 
 timeframe = st.sidebar.selectbox(
      'Timeframe',
-     ("Past 1 Hour", "Past 4 Hours", "Past 24 Hours", "Past 7 Days", "Past 30 Days", "Past 90 Days", "Past 12 Months", "Past 5 Years"), index = 3)
+     ("Past 1 Hour", "Past 4 Hours", "Past 24 Hours", "Past 7 Days", "Past 30 Days", "Past 90 Days", "Past 12 Months", "Past 5 Years"), index = 4)
 
 if timeframe == "Past 7 Days":
   timeframe = "now 7-d"
