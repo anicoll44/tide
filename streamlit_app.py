@@ -11,11 +11,11 @@ timeframe = "now 7-d"
 number_of_related_queries = 3
 kw_list = ["Blockchain"]
 
-pytrend = TrendReq()
-pytrend.build_payload(kw_list, cat=0, timeframe = timeframe, geo = 'US')
+pytrends = TrendReq()
+pytrends.build_payload(kw_list, cat=0, timeframe = timeframe, geo = 'US')
 
 #get top related queries for provided keyword
-related_queries = pytrend.related_queries()
+related_queries = pytrends.related_queries()
 related_queries.values()
 
 #build kw list that includes provided and related top queries
@@ -24,7 +24,7 @@ top_related_list = top_df['query'].tolist()
 kw_list.append(top_related_list)
 
 #get interest over time
-pytrend.build_payload(kw_list, cat=0, timeframe = timeframe, geo = 'US')
+pytrends.build_payload(kw_list, cat=0, timeframe = timeframe, geo = 'US')
 interest_o_time_df = pytrend.interest_over_time()
 interest_o_time_df = interest_o_time_df.drop(columns=['isPartial'])
 
