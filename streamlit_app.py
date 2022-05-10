@@ -33,3 +33,7 @@ if get_data_button:
   interest_o_time_df = interest_o_time_df.drop(columns=['isPartial'])
 
   st.line_chart(data=interest_o_time_df)
+  
+  #get rising queries
+  rising_df = list(related_queries.values())[0]['rising']
+  st.dataframe(data=rising_df)
