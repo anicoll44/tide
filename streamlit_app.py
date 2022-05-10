@@ -7,17 +7,13 @@ import requests
 from GoogleNews import GoogleNews
 
 kw = st.text_input('Enter a Keyword', None, type="default")
-st.write(type(kw))
+kw_list = [kw]
 
 # build request parameters
 timeframe = "now 7-d"
 number_of_related_queries = 3
 
 if kw is not None:
-  #build model
-  kw_list = [kw]
-  st.write(kw_list)
-  st.write(type(kw_list))
   pytrend = TrendReq()
   pytrend.build_payload(kw_list, cat=0, timeframe = timeframe, geo = 'US')
 
