@@ -41,7 +41,7 @@ elif timeframe == 'Past 5 Years':
 #Select rising query timeframe
 rising_query_timeframe = st.sidebar.selectbox(
      'Rising Keyword Timeframe',
-     ("Past 1 Hour", "Past 4 Hours", "Past 24 Hours", "Past 7 Days", "Past 30 Days", "Past 90 Days", "Past 12 Months", "Past 5 Years"), index = 3, help = 'Queries with the biggest increase in search frequency since the last time period. Results marked "Breakout" had a tremendous increase, probably because these queries are new and had few (if any) prior searches.')
+     ("Past 1 Hour", "Past 4 Hours", "Past 24 Hours", "Past 7 Days", "Past 30 Days", "Past 90 Days", "Past 12 Months", "Past 5 Years"), index = 3, help = 'Keywords with the biggest increase in search frequency during this timeframe. Results marked "Breakout" had a tremendous increase, probably because these keywords are new and had few (if any) prior searches.')
 
 #Map timeframe to google trends requirements
 if rising_query_timeframe == "Past 7 Days":
