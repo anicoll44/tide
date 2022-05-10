@@ -91,11 +91,14 @@ if get_data_button:
   
   st.subheader('Interest Over Time')
   st.line_chart(data=interest_o_time_df)
+     
+  col1, col2 = st.columns(2)
   
-  #get rising queries
-  rising_df = list(related_queries.values())[0]['rising']
-  rising_df = rising_df.reset_index(drop=True)
-  rising_df = rising_df.rename(columns={"query": "Keyword", "value": "% Increase"})
-  
-  st.subheader('Rising Related Keywords')
-  st.dataframe(data=rising_df)
+  with col1:
+     #get rising queries
+     rising_df = list(related_queries.values())[0]['rising']
+     rising_df = rising_df.reset_index(drop=True)
+     rising_df = rising_df.rename(columns={"query": "Keyword", "value": "% Increase"})
+
+     st.subheader('Rising Related Keywords')
+     st.dataframe(data=rising_df)
