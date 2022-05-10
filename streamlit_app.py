@@ -11,13 +11,16 @@ st.set_page_config(layout="wide")
 
 #Build sidebar and set request paramaeters
 
+#Enter target keyword
 kw = st.sidebar.text_input('Enter a Target Keyword', '', type = 'default')
 kw_list = [kw]
 
+#Select timeframe
 timeframe = st.sidebar.selectbox(
      'Timeframe',
      ("Past 1 Hour", "Past 4 Hours", "Past 24 Hours", "Past 7 Days", "Past 30 Days", "Past 90 Days", "Past 12 Months", "Past 5 Years"), index = 4)
 
+#Map timeframe to google trends requirements
 if timeframe == "Past 7 Days":
   timeframe = "now 7-d"
 elif timeframe == 'Past 1 Hour':
@@ -35,10 +38,12 @@ elif timeframe == 'Past 12 Months':
 elif timeframe == 'Past 5 Years':
   timeframe = 'today 5-y'
 
+#Select rising query timeframe
 rising_query_timeframe = st.sidebar.selectbox(
      'Rising Query Timeframe',
      ("Past 1 Hour", "Past 4 Hours", "Past 24 Hours", "Past 7 Days", "Past 30 Days", "Past 90 Days", "Past 12 Months", "Past 5 Years"), index = 3)
 
+#Map timeframe to google trends requirements
 if rising_query_timeframe == "Past 7 Days":
   rising_query_timeframe = "now 7-d"
 elif rising_query_timeframe == 'Past 1 Hour':
@@ -56,8 +61,13 @@ elif rising_query_timeframe == 'Past 12 Months':
 elif rising_query_timeframe == 'Past 5 Years':
   rising_query_timeframe = 'today 5-y'
 
+#Select number of related queries
 number_of_related_queries = st.sidebar.slider('# of Related Keywords', min_value=0, max_value=4, value=2, help='The number of top related keywords to return and compare against your target keyword')
 
+#Select number of related news
+number_of_related_news = st.sidebar.slider('# of Related News Articles', min_value=0, max_value=4, value= 2, help='The number of related news articles to return for your target and related keywords')
+
+#Button to trigger getting google trends data
 get_data_button = st.sidebar.button('Get Google Trends Data')
 
 #Get Google trends data
