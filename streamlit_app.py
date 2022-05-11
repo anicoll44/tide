@@ -150,7 +150,7 @@ if check_password():
             
             st.write('')                                           
             st.markdown('###### Realtime Search Trends (US)')
-            st.dataframe(data=real_time_trends)
+            st.table(data=real_time_trends)
 
         with col3:
             trending_df = pytrends.trending_searches(pn='united_states')
