@@ -139,7 +139,7 @@ if check_password():
             
             st.write('')
             st.markdown('###### Rising Related Keywords')
-            st.table(data=rising_df)
+            st.dataframe(data=rising_df)
         
         with col2:
             real_time_trends = pytrends.realtime_trending_searches(pn='US')
@@ -150,7 +150,7 @@ if check_password():
             
             st.write('')                                           
             st.markdown('###### Realtime Search Trends (US)')
-            st.table(data=real_time_trends)
+            st.dataframe(data=real_time_trends)
 
         with col3:
             trending_df = pytrends.trending_searches(pn='united_states')
@@ -160,7 +160,7 @@ if check_password():
             
             st.write('')
             st.markdown('###### Daily Search Trends (US)')
-            st.table(data=trending_df)
+            st.dataframe(data=trending_df)
     
         #Get Google News Data
         googlenews = GoogleNews()
