@@ -9,7 +9,7 @@ from GoogleNews import GoogleNews
 
 #Set width of page to fullscreen
 st.set_page_config(page_title = 'Project TIDE', initial_sidebar_state = 'expanded', layout="wide", menu_items = {'About': 'Reach out to Andrew Nicoll on Slack'})
-st.title('Project T I D E')
+st.sidebar.title("Project T I D E")
 
 
 def check_password():
@@ -43,9 +43,7 @@ def check_password():
 if check_password():
 
     #Build sidebar and set request paramaeters
-    st.title(None)
-    st.sidebar.title("Project T I D E")
-
+    
     #Enter target keyword
     kw = st.sidebar.text_input('Enter a Target Keyword', '', type = 'default')
     kw_list = [kw]
