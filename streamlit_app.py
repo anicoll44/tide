@@ -7,23 +7,10 @@ import requests
 from datetime import datetime, date, time
 from GoogleNews import GoogleNews
 
+st.write('<style>div.block-container{padding-top:2rem;}</style>', unsafe_allow_html=True)
+
 #Set width of page to fullscreen
 st.set_page_config(page_title = 'Project TIDE', initial_sidebar_state = 'expanded', layout="wide", menu_items = {'About': 'Reach out to Andrew Nicoll on Slack'})
-
-# Remove whitespace from the top of the page and sidebar
-st.markdown(
-            f'''
-            <style>
-                .reportview-container .css-1lcbmhc .css-1outpf7 {{
-                    padding-top: 35px;
-                }}
-                :
-                :
-               etc.
-                :
-                :
-            </style>
-            ''',)
 
 #Build sidebar and set request paramaeters
 st.sidebar.title("Project T I D E")
