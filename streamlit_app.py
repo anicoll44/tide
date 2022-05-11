@@ -120,7 +120,7 @@ if get_data_button:
      trending_df['Rank'] = trending_df.index + 1
      trending_list = trending_df['Keyword'].head(number_of_related_news).tolist()
      
-     st.markdown('#### Daily Search Trends')
+     st.markdown('###### Daily Search Trends')
      st.dataframe(data=trending_df)
   
   #Get Google News Data
