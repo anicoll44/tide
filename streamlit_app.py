@@ -100,7 +100,7 @@ if get_data_button:
      rising_df = list(related_queries.values())[0]['rising']
      rising_df = rising_df.reset_index(drop=True)
      rising_df = rising_df.rename(columns={"query": "Keyword", "value": "% Increase"})
-     top_rising_list = rising_df['Keyword'].tolist()
+     top_rising_list = rising_df['Keyword'].head(number_of_related_news).tolist()
 
      st.markdown('###Rising Related Keywords')
      st.dataframe(data=rising_df)
@@ -109,7 +109,7 @@ if get_data_button:
      trending_df = pytrends.trending_searches(pn='united_states')
      trending_df = trending_df.rename(columns={0: "Keyword"})
      trending_df['Rank'] = trending_df.index + 1
-     trending_list = trending_df['Keyword'].tolist()
+     trending_list = trending_df['Keyword'].head(number_of_related_news).tolist()
      
      st.markdown('###Trending Keywords')
      st.dataframe(data=trending_df)
@@ -118,7 +118,7 @@ if get_data_button:
   googlenews = GoogleNews()
   
   #Create df to load news data
-  news_df = pd.DataFrame(columns=['title', 'media',	'date',	'datetime',	'desc',	'link',	'img', 'query'])
+  news_df = pd.DataFrame(columns=['title', 'media','date','datetime',	'desc','link',	'img', 'query'])
 
   #Create list of uniquq tracked keywords and related queries
   gnews_list = top_related_list + top_rising_list + trending_list
