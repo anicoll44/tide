@@ -116,6 +116,7 @@ if get_data_button:
   
   #Get Google News Data
   googlenews = GoogleNews()
+  today = date.today()
   
   #Create df to load news data
   news_df = pd.DataFrame(columns=['title', 'media',	'date',	'datetime',	'desc',	'link',	'img', 'query'])
