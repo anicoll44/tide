@@ -124,6 +124,8 @@ if get_data_button:
   gnews_list = top_related_list + top_rising_list + trending_list
   gset = set(gnews_list)
   gnews_list = gset
+  
+  st.write(gnews_list)
 
   #Get Google News for each item in list
   if number_of_related_news > 0:
