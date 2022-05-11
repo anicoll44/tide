@@ -129,7 +129,7 @@ if get_data_button:
   with st.container():
       st.markdown('###### Google News')
       news_kw = st.text_input('Enter a Keyword', '', type = 'default', help = 'Get news from Google for the keyword entered')
-      get_news_button = st.button('Check Google News')
+      get_news_button = st.form_submit_button('Check Google News')
 
       if get_news_button:
         try:
