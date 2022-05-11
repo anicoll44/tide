@@ -23,7 +23,7 @@ st.markdown(
                 :
                 :
             </style>
-            ''',
+            ''',)
 
 #Build sidebar and set request paramaeters
 st.sidebar.title("Project T I D E")
