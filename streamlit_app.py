@@ -148,7 +148,7 @@ if get_data_button:
           temp_news_df = pd.DataFrame(result)
           temp_news_df['query'] = item
           news_df = news_df.append(temp_news_df, ignore_index=True)
-          st.write(item)
+          st.dataframe(data = temp_news_df)
       except requests.exceptions.Timeout:
           st.write('Timeout occured, please try again')
   
