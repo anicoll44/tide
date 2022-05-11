@@ -116,7 +116,6 @@ if get_data_button:
   
   #Get Google News Data
   googlenews = GoogleNews()
-  today = date.today()
   
   #Create df to load news data
   news_df = pd.DataFrame(columns=['title', 'media',	'date',	'datetime',	'desc',	'link',	'img', 'query'])
@@ -140,8 +139,8 @@ if get_data_button:
                st.write('Requests made too frequently. Wait a few minutes and try again')
           except requests.exceptions.Timeout:
                st.write('Timeout occured, please try again')
-          else:
-              news_df = news_df.append({'title':'Zero news selected', 'media': 'Zero news selected','date': 'today','datetime': 'today','desc': 'Zero news selected',	'link': 'www.redventures.com','img': 'Zero news selected', 'query': 'Zero news selected'}, ignore_index=True)
+  else:
+     news_df = news_df.append({'title':'Zero news selected', 'media': 'Zero news selected','date': 'today','datetime': 'today','desc': 'Zero news selected',	'link': 'www.redventures.com','img': 'Zero news selected', 'query': 'Zero news selected'}, ignore_index=True)
      
   #Cleanup and show news df
   news_df = news_df.drop('img', axis = 1)
