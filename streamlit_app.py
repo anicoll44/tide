@@ -138,19 +138,16 @@ if get_data_button:
   gnews_list = gset
 
   #Get Google News for each item in list
-  if number_of_related_news > 0:
-      for item in gnews_list:
-          try:
-              googlenews.clear()
-              googlenews.search(item)
-              result = googlenews.results()
-              temp_news_df = pd.DataFrame(result)
-              temp_news_df['query'] = item
-              news_df = news_df.append(temp_news_df, ignore_index=True)
-          except HTTPError:
-              st.write('Requests made too frequently. Wait a few minutes and try again')
-          except requests.exceptions.Timeout:
-              st.write('Timeout occured, please try again')
+  for item in gnews_list:
+      try:
+          googlenews.clear()
+          googlenews.search(item)
+          result = googlenews.results()
+          temp_news_df = pd.DataFrame(result)
+          temp_news_df['query'] = item
+          news_df = news_df.append(temp_news_df, ignore_index=True)
+      except requests.exceptions.Timeout:
+          st.write('Timeout occured, please try again')
   else:
      news_df = news_df.append({'title':'Zero news selected', 'media': 'Zero news selected','date': 'today','datetime': 'today','desc': 'Zero news selected',	'link': 'www.redventures.com','img': 'Zero news selected', 'query': 'Zero news selected'}, ignore_index=True)
      
