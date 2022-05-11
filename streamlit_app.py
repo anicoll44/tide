@@ -90,7 +90,7 @@ if get_data_button:
   interest_o_time_df = pytrends.interest_over_time()
   interest_o_time_df = interest_o_time_df.drop(columns=['isPartial'])
   
-  st.markdown('### Interest Over Time')
+  st.markdown('#### Interest Over Time')
   st.line_chart(data=interest_o_time_df)
      
   col1, col2 = st.columns(2)
@@ -102,7 +102,7 @@ if get_data_button:
      rising_df = rising_df.rename(columns={"query": "Keyword", "value": "% Increase"})
      top_rising_list = rising_df['Keyword'].head(number_of_related_news).tolist()
 
-     st.markdown('### Rising Related Keywords')
+     st.markdown('#### Rising Related Keywords')
      st.dataframe(data=rising_df)
      
   with col2:
@@ -111,7 +111,7 @@ if get_data_button:
      trending_df['Rank'] = trending_df.index + 1
      trending_list = trending_df['Keyword'].head(number_of_related_news).tolist()
      
-     st.markdown('### Trending Keywords')
+     st.markdown('#### Trending Keywords')
      st.dataframe(data=trending_df)
   
   #Get Google News Data
@@ -145,7 +145,7 @@ if get_data_button:
   #Cleanup and show news df
   news_df = news_df.drop('img', axis = 1)
   news_df = news_df.drop_duplicates()
-  st.markdown('### Related News')
+  st.markdown('#### Related News')
   st.dataframe(data=news_df)
      
    
