@@ -6,10 +6,17 @@ import numpy as np
 import requests
 from datetime import datetime, date, time
 from GoogleNews import GoogleNews
+from PIL import Image
+
+
+
 
 #Set width of page to fullscreen
 st.set_page_config(page_title = 'Project TIDE', initial_sidebar_state = 'expanded', layout="wide", menu_items = {'About': 'Reach out to Andrew Nicoll on Slack'})
+image = Image.open('tide.jpg')
+st.sidebar.image(image)
 st.sidebar.title("Project T I D E")
+
 
 
 def check_password():
