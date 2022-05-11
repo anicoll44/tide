@@ -126,22 +126,23 @@ if get_data_button:
 
   #Get Google News for each item in list
   st.text("")
-  st.markdown('###### Google News')
-  news_kw = st.text_input('Enter a Keyword', '', type = 'default', help = 'Get news from Google for the keyword entered')
-  get_news_button = st.button('Check Google News')
+  with st.container():
+      st.markdown('###### Google News')
+      news_kw = st.text_input('Enter a Keyword', '', type = 'default', help = 'Get news from Google for the keyword entered')
+      get_news_button = st.button('Check Google News')
 
-  if get_news_button:
-      try:
+      if get_news_button:
+        try:
           googlenews.clear()
           googlenews.search(news_kw)
           result = googlenews.results()
           news_df = pd.DataFrame(result)
-      except requests.exceptions.Timeout:
+        except requests.exceptions.Timeout:
           st.write('Timeout occured, please try again')
   
-      #Cleanup and show news df
-      news_df = news_df.drop('img', axis = 1)
-      st.dataframe(data=news_df)
+        #Cleanup and show news df
+        news_df = news_df.drop('img', axis = 1)
+        st.dataframe(data=news_df)
      
    
 
