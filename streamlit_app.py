@@ -64,10 +64,7 @@ elif rising_query_timeframe == 'Past 5 Years':
   rising_query_timeframe = 'today 5-y'
 
 #Select number of related queries
-number_of_related_queries = st.sidebar.slider('# of Related Keywords', min_value=0, max_value=4, value=2, help='The number of top related keywords to return and compare against your target keyword')
-
-#Select number of related news
-number_of_related_news = st.sidebar.slider('# of Related News Articles', min_value=0, max_value=5, value= 2, help='The number of related news articles to return for your target and related keywords')
+number_of_related_queries = st.sidebar.slider('# of Related Keywords', min_value=0, max_value=4, value=4, help='The number of top related keywords to return and compare against your target keyword')
 
 #Button to trigger getting google trends data
 get_data_button = st.sidebar.button('Get Google Trends Data')
@@ -101,7 +98,6 @@ if get_data_button:
      rising_df = list(related_queries.values())[0]['rising']
      rising_df = rising_df.reset_index(drop=True)
      rising_df = rising_df.rename(columns={"query": "Keyword", "value": "% Increase"})
-     top_rising_list = rising_df['Keyword'].head(number_of_related_news).tolist()
 
      st.text("")
      st.markdown('###### Rising Related Keywords')
@@ -111,7 +107,6 @@ if get_data_button:
      real_time_trends = pytrends.realtime_trending_searches(pn='US')
      real_time_trends = real_time_trends.drop('entityNames', axis = 1)
      real_time_trends = real_time_trends.rename(columns={"title": "Topic"})
-     real_time_list = real_time_trends['Topic'].head(number_of_related_news).tolist()
 
      st.text("")                                           
      st.markdown('###### Realtime Search Trends (US)')
@@ -121,7 +116,6 @@ if get_data_button:
      trending_df = pytrends.trending_searches(pn='united_states')
      trending_df = trending_df.rename(columns={0: "Keyword"})
      trending_df['Rank'] = trending_df.index + 1
-     trending_list = trending_df['Keyword'].head(number_of_related_news).tolist()
      
      st.text("")
      st.markdown('###### Daily Search Trends (US)')
@@ -133,7 +127,7 @@ if get_data_button:
   #Get Google News for each item in list
   st.text("")
   st.markdown('###### Google News')
-  news_kw = st.text_input('Enter a Keyword', '', type = 'default')
+  news_kw = st.text_input('Enter a Keyword', '', type = 'default', help = 'Get news from Google for the keyword entered')
   get_news_button = st.button('Check Google News')
 
   if get_news_button:
@@ -145,9 +139,9 @@ if get_data_button:
       except requests.exceptions.Timeout:
           st.write('Timeout occured, please try again')
   
-  #Cleanup and show news df
-  news_df = news_df.drop('img', axis = 1)
-  st.dataframe(data=news_df)
+      #Cleanup and show news df
+      news_df = news_df.drop('img', axis = 1)
+      st.dataframe(data=news_df)
      
    
 
