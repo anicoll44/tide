@@ -4,6 +4,7 @@ from pytrends.request import TrendReq
 import pandas as pd
 import numpy as np
 import requests
+from datetime import datetime, date, time
 from GoogleNews import GoogleNews
 
 #Set width of page to fullscreen
@@ -89,7 +90,7 @@ if get_data_button:
   interest_o_time_df = pytrends.interest_over_time()
   interest_o_time_df = interest_o_time_df.drop(columns=['isPartial'])
   
-  st.subheader('Interest Over Time')
+  st.markdown('###Interest Over Time')
   st.line_chart(data=interest_o_time_df)
      
   col1, col2 = st.columns(2)
@@ -99,17 +100,54 @@ if get_data_button:
      rising_df = list(related_queries.values())[0]['rising']
      rising_df = rising_df.reset_index(drop=True)
      rising_df = rising_df.rename(columns={"query": "Keyword", "value": "% Increase"})
+     top_rising_list = rising_df['Keyword'].tolist()
 
-     st.subheader('Rising Related Keywords')
+     st.markdown('###Rising Related Keywords')
      st.dataframe(data=rising_df)
      
   with col2:
      trending_df = pytrends.trending_searches(pn='united_states')
      trending_df = trending_df.rename(columns={0: "Keyword"})
      trending_df['Rank'] = trending_df.index + 1
+     trending_list = trending_df['Keyword'].tolist()
      
-     st.subheader('Trending Keywords')
+     st.markdown('###Trending Keywords')
      st.dataframe(data=trending_df)
+  
+  #Get Google News Data
+  googlenews = GoogleNews()
+  
+  #Create df to load news data
+  news_df = pd.DataFrame(columns=['title', 'media',	'date',	'datetime',	'desc',	'link',	'img', 'query'])
+
+  #Create list of uniquq tracked keywords and related queries
+  gnews_list = top_related_list + top_rising_list + trending_list
+  gset = set(gnews_list)
+  gnews_list = gset
+
+  #Get Google News for each item in list
+  if number_of_related_news > 0:
+     for item in gnews_list:
+          try:
+               googlenews.clear()
+               googlenews.search(item)
+               result = googlenews.results()
+               temp_news_df = pd.DataFrame(result)
+               temp_news_df['query'] = item
+               news_df = news_df.append(temp_news_df, ignore_index=True)
+          except HTTPError:
+               st.write('Requests made too frequently. Wait a few minutes and try again')
+          except requests.exceptions.Timeout:
+               st.write('Timeout occured, please try again')
+          else:
+              news_df = news_df.append({'title':'Zero news selected', 'media': 'Zero news selected','date': 'today','datetime': today,'desc': 'Zero news selected',	'link': 'www.redventures.com','img': 'Zero news selected', 'query': 'Zero news selected'}, ignore_index=True)
+     
+  #Cleanup and show news df
+  news_df = news_df.drop('img', axis = 1)
+  news_df = news_df.drop_duplicates()
+  st.markdown('###Related News')
+  st.dataframe(data=news_df)
+
      
    
 
