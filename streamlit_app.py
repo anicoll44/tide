@@ -148,9 +148,7 @@ if get_data_button:
           news_df = news_df.append(temp_news_df, ignore_index=True)
       except requests.exceptions.Timeout:
           st.write('Timeout occured, please try again')
-  else:
-     news_df = news_df.append({'title':'Zero news selected', 'media': 'Zero news selected','date': 'today','datetime': 'today','desc': 'Zero news selected',	'link': 'www.redventures.com','img': 'Zero news selected', 'query': 'Zero news selected'}, ignore_index=True)
-     
+  
   #Cleanup and show news df
   news_df = news_df.drop('img', axis = 1)
   news_df = news_df.drop_duplicates()
