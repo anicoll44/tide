@@ -13,17 +13,6 @@ st.set_page_config(page_title = 'Project TIDE', initial_sidebar_state = 'expande
 #Build sidebar and set request paramaeters
 st.sidebar.title("Project T I D E")
 
-# CSS to inject contained in a string
-hide_dataframe_row_index = """
-            <style>
-            .row_heading.level0 {display:none}
-            .blank {display:none}
-            </style>
-            """
-
-# Inject CSS with Markdown
-st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
-
 #Enter target keyword
 kw = st.sidebar.text_input('Enter a Target Keyword', '', type = 'default')
 kw_list = [kw]
