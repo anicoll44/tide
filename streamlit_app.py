@@ -91,7 +91,7 @@ if get_data_button:
   interest_o_time_df = pytrends.interest_over_time()
   interest_o_time_df = interest_o_time_df.drop(columns=['isPartial'])
   
-  st.markdown('###### Interest Over Time')
+  st.markdown('##### Interest Over Time')
   st.line_chart(data=interest_o_time_df)
      
   col1, col2, col3 = st.columns(3)
