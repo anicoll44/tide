@@ -64,7 +64,7 @@ elif rising_query_timeframe == 'Past 5 Years':
   rising_query_timeframe = 'today 5-y'
 
 #Select number of related queries
-number_of_related_queries = st.sidebar.slider('# of Related Keywords', min_value=0, max_value=4, value=2, help='The number of top related keywords to return and compare against your target keyword')
+number_of_related_queries = st.sidebar.slider('# of Related Keywords', min_value=0, max_value=4, value=4, help='The number of top related keywords to return and compare against your target keyword')
 
 #Select number of related news
 number_of_related_news = st.sidebar.slider('# of Related News Articles', min_value=0, max_value=5, value= 2, help='The number of related news articles to return for your target and related keywords')
