@@ -91,7 +91,7 @@ if get_data_button:
   interest_o_time_df = pytrends.interest_over_time()
   interest_o_time_df = interest_o_time_df.drop(columns=['isPartial'])
   
-  st.markdown('#### Interest Over Time')
+  st.markdown('###### Interest Over Time')
   st.line_chart(data=interest_o_time_df)
      
   col1, col2, col3 = st.columns(3)
@@ -103,7 +103,7 @@ if get_data_button:
      rising_df = rising_df.rename(columns={"query": "Keyword", "value": "% Increase"})
      top_rising_list = rising_df['Keyword'].head(number_of_related_news).tolist()
 
-     st.markdown('#### Rising Related Keywords')
+     st.markdown('###### Rising Related Keywords')
      st.dataframe(data=rising_df)
      
   with col2:
@@ -111,7 +111,7 @@ if get_data_button:
      real_time_trends = real_time_trends.drop('entityNames', axis = 1)
      real_time_trends = real_time_trends.rename(columns={"title": "Topic"})
                                                 
-     st.markdown('#### Realtime Search Trends')
+     st.markdown('###### Realtime Search Trends')
      st.dataframe(data=real_time_trends)
 
   with col3:
