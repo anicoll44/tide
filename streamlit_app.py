@@ -8,7 +8,7 @@ from datetime import datetime, date, time
 from GoogleNews import GoogleNews
 
 #Set width of page to fullscreen
-st.set_page_config(page_title = 'Project TIDE', initial_sidebar_state = 'expanded', layout="wide", menu_items = {'Get Help': "Reach out to Andrew Nicoll on Slack)
+st.set_page_config(page_title = 'Project TIDE', initial_sidebar_state = 'expanded', layout="wide", menu_items = {'Get Help': 'Reach out to Andrew Nicoll on Slack'})
 
 #Build sidebar and set request paramaeters
 
