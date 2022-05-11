@@ -133,11 +133,9 @@ if get_data_button:
   news_df = pd.DataFrame(columns=['title', 'media',	'date',	'datetime',	'desc',	'link',	'img', 'query'])
 
   #Create list of uniquq tracked keywords and related queries
-  gnews_list = top_related_list + top_rising_list + trending_list
+  gnews_list = kw_list + top_rising_list + trending_list
   gset = set(gnews_list)
   gnews_list = gset
-  st.write(type(gnews_list))
-  st.write(gnews_list)
 
   #Get Google News for each item in list
   for item in gnews_list:
@@ -148,8 +146,6 @@ if get_data_button:
           temp_news_df = pd.DataFrame(result)
           temp_news_df['query'] = item
           news_df = news_df.append(temp_news_df, ignore_index=True)
-          st.write(item)
-          st.write(result)
       except requests.exceptions.Timeout:
           st.write('Timeout occured, please try again')
   
