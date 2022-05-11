@@ -155,4 +155,4 @@ if get_data_button:
   news_df = news_df.drop_duplicates()
   st.write('')   
   st.markdown('###### Related News')
-  st.dataframe(data=news_df)
+  st.dataframe(data=news_df, height=800)
