@@ -70,6 +70,7 @@ number_of_related_queries = st.sidebar.slider('# of Related Keywords', min_value
 get_data_button = st.sidebar.button('Get Google Trends Data')
 
 #Get Google trends data
+@st.cache(suppress_st_warning=True)
 if get_data_button:
   pytrends = TrendReq()
   pytrends.build_payload(kw_list, cat=0, timeframe = timeframe, geo = 'US')
