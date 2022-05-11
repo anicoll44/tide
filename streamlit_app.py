@@ -11,7 +11,7 @@ from GoogleNews import GoogleNews
 st.set_page_config(page_title = 'Project TIDE', initial_sidebar_state = 'expanded', layout="wide", menu_items = {'About': 'Reach out to Andrew Nicoll on Slack'})
 
 #Build sidebar and set request paramaeters
-st.sidebar.subheader("Project T I D E")
+st.sidebar.title("Project T I D E")
 
 #Enter target keyword
 kw = st.sidebar.text_input('Enter a Target Keyword', '', type = 'default')
