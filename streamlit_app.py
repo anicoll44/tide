@@ -94,7 +94,7 @@ if get_data_button:
   st.markdown('#### Interest Over Time')
   st.line_chart(data=interest_o_time_df)
      
-  col1, col2 = st.columns(2)
+  col1, col2, col3 = st.columns(3)
   
   with col1:
      #get rising queries
@@ -107,12 +107,20 @@ if get_data_button:
      st.dataframe(data=rising_df)
      
   with col2:
+     real_time_trends = pytrends.realtime_trending_searches(pn='US')
+     real_time_trends = real_time_trends.drop('entityNames', axis = 1)
+     real_time_trends = real_time_trends.rename(columns={"title": "Topic"}
+                                                
+     st.markdown('#### Realtime Search Trends')
+     st.dataframe(data=real_time_trends)
+
+  with col3:
      trending_df = pytrends.trending_searches(pn='united_states')
      trending_df = trending_df.rename(columns={0: "Keyword"})
      trending_df['Rank'] = trending_df.index + 1
      trending_list = trending_df['Keyword'].head(number_of_related_news).tolist()
      
-     st.markdown('#### Trending Keywords')
+     st.markdown('#### Daily Search Trends')
      st.dataframe(data=trending_df)
   
   #Get Google News Data
