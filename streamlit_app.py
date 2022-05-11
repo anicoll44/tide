@@ -140,9 +140,9 @@ with st.form("Google News Form"):
          except requests.exceptions.Timeout:
             st.write('Timeout occured, please try again')
     
-         #Cleanup and show news df
-         news_df = news_df.drop('img', axis = 1)
-         st.dataframe(data=news_df)
+     #Cleanup and show news df
+     news_df = news_df.drop('img', axis = 1)
+     st.dataframe(data=news_df)
      
    
 
