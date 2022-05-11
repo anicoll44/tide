@@ -151,8 +151,9 @@ if get_data_button:
           st.write('Timeout occured, please try again')
   
   #Cleanup and show news df
-  news_df = news_df.drop('img', axis = 1)
   news_df = news_df.drop_duplicates()
+  news_df = news_df.drop(columns=['img','media','datetime','desc'])
+  news_df = news_df.rename(columns={"title": "Title", "date": "Date", "link": "URL", "query": "Keyword"})
   st.write('')   
   st.markdown('###### Related News')
   st.dataframe(data=news_df, height=800)
