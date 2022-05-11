@@ -109,7 +109,7 @@ if get_data_button:
   with col2:
      real_time_trends = pytrends.realtime_trending_searches(pn='US')
      real_time_trends = real_time_trends.drop('entityNames', axis = 1)
-     real_time_trends = real_time_trends.rename(columns={"title": "Topic"}
+     real_time_trends = real_time_trends.rename(columns={"title": "Topic"})
                                                 
      st.markdown('#### Realtime Search Trends')
      st.dataframe(data=real_time_trends)
