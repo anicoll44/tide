@@ -145,6 +145,7 @@ if check_password():
             real_time_trends = pytrends.realtime_trending_searches(pn='US')
             real_time_trends = real_time_trends.drop('entityNames', axis = 1)
             real_time_trends = real_time_trends.rename(columns={"title": "Topic"})
+            real_time_trends['Rank'] = real_time_trends.index + 1
             real_time_list = real_time_trends['Topic'].head(number_of_related_news).tolist()
             
             st.write('')                                           
