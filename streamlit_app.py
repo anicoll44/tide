@@ -70,79 +70,76 @@ number_of_related_queries = st.sidebar.slider('# of Related Keywords', min_value
 get_data_button = st.sidebar.button('Get Google Trends Data')
 
 #Get Google trends data
-with st.form("Google News Form"):
-    if get_data_button:
-     pytrends = TrendReq()
-     pytrends.build_payload(kw_list, cat=0, timeframe = timeframe, geo = 'US')
+if get_data_button:
+  pytrends = TrendReq()
+  pytrends.build_payload(kw_list, cat=0, timeframe = timeframe, geo = 'US')
 
-     #get top related queries for provided keyword
-     related_queries = pytrends.related_queries()
-     related_queries.values()
+  #get top related queries for provided keyword
+  related_queries = pytrends.related_queries()
+  related_queries.values()
 
-     #build kw list that includes provided and related top queries
-     top_df = list(related_queries.values())[0]['top'].head(number_of_related_queries)
-     top_related_list = top_df['query'].tolist()
-     kw_list.extend(top_related_list)
+  #build kw list that includes provided and related top queries
+  top_df = list(related_queries.values())[0]['top'].head(number_of_related_queries)
+  top_related_list = top_df['query'].tolist()
+  kw_list.extend(top_related_list)
 
-     #get interest over time
-     pytrends.build_payload(kw_list, cat=0, timeframe = timeframe, geo = 'US')
-     interest_o_time_df = pytrends.interest_over_time()
-     interest_o_time_df = interest_o_time_df.drop(columns=['isPartial'])
-    
-     st.markdown('##### Interest Over Time')
-     st.line_chart(data=interest_o_time_df)
-        
-     col1, col2, col3 = st.columns(3)
-    
-     with col1:
-        #get rising queries
-        rising_df = list(related_queries.values())[0]['rising']
-        rising_df = rising_df.reset_index(drop=True)
-        rising_df = rising_df.rename(columns={"query": "Keyword", "value": "% Increase"})
+  #get interest over time
+  pytrends.build_payload(kw_list, cat=0, timeframe = timeframe, geo = 'US')
+  interest_o_time_df = pytrends.interest_over_time()
+  interest_o_time_df = interest_o_time_df.drop(columns=['isPartial'])
+  
+  st.markdown('##### Interest Over Time')
+  st.line_chart(data=interest_o_time_df)
+     
+  col1, col2, col3 = st.columns(3)
+  
+  with col1:
+     #get rising queries
+     rising_df = list(related_queries.values())[0]['rising']
+     rising_df = rising_df.reset_index(drop=True)
+     rising_df = rising_df.rename(columns={"query": "Keyword", "value": "% Increase"})
 
-        st.text("")
-        st.markdown('###### Rising Related Keywords')
-        st.dataframe(data=rising_df)
-        
-     with col2:
-        real_time_trends = pytrends.realtime_trending_searches(pn='US')
-        real_time_trends = real_time_trends.drop('entityNames', axis = 1)
-        real_time_trends = real_time_trends.rename(columns={"title": "Topic"})
-
-        st.text("")                                           
-        st.markdown('###### Realtime Search Trends (US)')
-        st.dataframe(data=real_time_trends)
-
-     with col3:
-        trending_df = pytrends.trending_searches(pn='united_states')
-        trending_df = trending_df.rename(columns={0: "Keyword"})
-        trending_df['Rank'] = trending_df.index + 1
-        
-        st.text("")
-        st.markdown('###### Daily Search Trends (US)')
-        st.dataframe(data=trending_df)
-    
-     #Get Google News Data
-     googlenews = GoogleNews()
-
-     #Get Google News for each item in list
      st.text("")
-     st.markdown('###### Google News')
-     news_kw = st.text_input('Enter a Keyword', '', type = 'default', help = 'Get news from Google for the keyword entered')
-     get_news_button = st.form_submit_button('Check Google News')
+     st.markdown('###### Rising Related Keywords')
+     st.dataframe(data=rising_df)
      
-     if get_news_button:
-         try:
-            googlenews.clear()
-            googlenews.search(news_kw)
-            result = googlenews.results()
-            news_df = pd.DataFrame(result)
-         except requests.exceptions.Timeout:
-            st.write('Timeout occured, please try again')
-    
-     #Cleanup and show news df
-     news_df = news_df.drop('img', axis = 1)
-     st.dataframe(data=news_df)
-     
-   
+  with col2:
+     real_time_trends = pytrends.realtime_trending_searches(pn='US')
+     real_time_trends = real_time_trends.drop('entityNames', axis = 1)
+     real_time_trends = real_time_trends.rename(columns={"title": "Topic"})
 
+     st.text("")                                           
+     st.markdown('###### Realtime Search Trends (US)')
+     st.dataframe(data=real_time_trends)
+
+  with col3:
+     trending_df = pytrends.trending_searches(pn='united_states')
+     trending_df = trending_df.rename(columns={0: "Keyword"})
+     trending_df['Rank'] = trending_df.index + 1
+     
+     st.text("")
+     st.markdown('###### Daily Search Trends (US)')
+     st.dataframe(data=trending_df)
+  
+  #Get Google News Data
+  googlenews = GoogleNews()
+
+  #Get Google News for each item in list
+  st.text("")
+  with st.form("Google News Form"):
+      st.markdown('###### Google News')
+      news_kw = st.text_input('Enter a Keyword', '', type = 'default', help = 'Get news from Google for the keyword entered')
+      get_news_button = st.form_submit_button('Check Google News')
+
+      if get_news_button:
+        try:
+          googlenews.clear()
+          googlenews.search(news_kw)
+          result = googlenews.results()
+          news_df = pd.DataFrame(result)
+        except requests.exceptions.Timeout:
+          st.write('Timeout occured, please try again')
+  
+        #Cleanup and show news df
+        news_df = news_df.drop('img', axis = 1)
+        st.dataframe(data=news_df)
