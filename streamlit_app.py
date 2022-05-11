@@ -131,7 +131,7 @@ if get_data_button:
   news_df = pd.DataFrame(columns=['title', 'media',	'date',	'datetime',	'desc',	'link',	'img', 'query'])
 
   #Create list of uniquq tracked keywords and related queries
-  gnews_list = kw_list + top_rising_list + trending_list
+  gnews_list = kw_list + top_rising_list + trending_list + real_time_list
   gset = set(gnews_list)
   gnews_list = gset
 
