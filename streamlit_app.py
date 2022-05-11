@@ -126,7 +126,7 @@ if get_data_button:
 
   #Get Google News for each item in list
   st.text("")
-  with st.container():
+  with st.form("Google News Form"):
       st.markdown('###### Google News')
       news_kw = st.text_input('Enter a Keyword', '', type = 'default', help = 'Get news from Google for the keyword entered')
       get_news_button = st.form_submit_button('Check Google News')
