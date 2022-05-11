@@ -43,6 +43,7 @@ def check_password():
 if check_password():
 
     #Build sidebar and set request paramaeters
+    st.title(None)
     st.sidebar.title("Project T I D E")
 
     #Enter target keyword
