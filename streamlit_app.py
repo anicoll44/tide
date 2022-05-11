@@ -112,7 +112,7 @@ if get_data_button:
      real_time_trends = real_time_trends.rename(columns={"title": "Topic"})
      real_time_list = real_time_trends['Topic'].head(number_of_related_news).tolist()
                                                 
-     st.markdown('###### Realtime Search Trends')
+     st.markdown('###### Realtime Search Trends (US)')
      st.dataframe(data=real_time_trends)
 
   with col3:
@@ -121,7 +121,7 @@ if get_data_button:
      trending_df['Rank'] = trending_df.index + 1
      trending_list = trending_df['Keyword'].head(number_of_related_news).tolist()
      
-     st.markdown('###### Daily Search Trends')
+     st.markdown('###### Daily Search Trends (US)')
      st.dataframe(data=trending_df)
   
   #Get Google News Data
