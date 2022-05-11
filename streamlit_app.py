@@ -7,12 +7,11 @@ import requests
 from datetime import datetime, date, time
 from GoogleNews import GoogleNews
 
-st.write('<style>div.block-container{padding-top:2rem;}</style>', unsafe_allow_html=True)
-
 #Set width of page to fullscreen
 st.set_page_config(page_title = 'Project TIDE', initial_sidebar_state = 'expanded', layout="wide", menu_items = {'About': 'Reach out to Andrew Nicoll on Slack'})
 
 #Build sidebar and set request paramaeters
+st.write('<style>div.block-container{padding-top:2rem;}</style>', unsafe_allow_html=True)
 st.sidebar.title("Project T I D E")
 
 #Enter target keyword
