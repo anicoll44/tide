@@ -67,7 +67,7 @@ elif rising_query_timeframe == 'Past 5 Years':
 number_of_related_queries = st.sidebar.slider('# of Related Keywords', min_value=0, max_value=4, value=4, help='The number of top related keywords to return and compare against your target keyword')
 
 #Select number of related news
-number_of_related_news = st.sidebar.slider('# of Related News Articles', min_value=0, max_value=5, value= 2, help='The number of related news articles to return for your target and related keywords')
+number_of_related_news = st.sidebar.slider('# of Related News Articles', min_value=0, max_value=5, value= 2, help='The number of top keywords to return related news for')
 
 #Button to trigger getting google trends data
 get_data_button = st.sidebar.button('Get Google Trends Data')
@@ -102,7 +102,8 @@ if get_data_button:
      rising_df = rising_df.reset_index(drop=True)
      rising_df = rising_df.rename(columns={"query": "Keyword", "value": "% Increase"})
      top_rising_list = rising_df['Keyword'].head(number_of_related_news).tolist()
-
+     
+     st.write('')
      st.markdown('###### Rising Related Keywords')
      st.dataframe(data=rising_df)
      
@@ -111,7 +112,8 @@ if get_data_button:
      real_time_trends = real_time_trends.drop('entityNames', axis = 1)
      real_time_trends = real_time_trends.rename(columns={"title": "Topic"})
      real_time_list = real_time_trends['Topic'].head(number_of_related_news).tolist()
-                                                
+     
+     st.write('')                                           
      st.markdown('###### Realtime Search Trends (US)')
      st.dataframe(data=real_time_trends)
 
@@ -121,6 +123,7 @@ if get_data_button:
      trending_df['Rank'] = trending_df.index + 1
      trending_list = trending_df['Keyword'].head(number_of_related_news).tolist()
      
+     st.write('')
      st.markdown('###### Daily Search Trends (US)')
      st.dataframe(data=trending_df)
   
@@ -150,5 +153,6 @@ if get_data_button:
   #Cleanup and show news df
   news_df = news_df.drop('img', axis = 1)
   news_df = news_df.drop_duplicates()
+  st.write('')   
   st.markdown('###### Related News')
   st.dataframe(data=news_df)
