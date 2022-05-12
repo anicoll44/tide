@@ -31,7 +31,7 @@ def check_password():
         st.write("TIDE helps automate Google Trends analysis, making it much easier and efficient. It returns data for requested keywords, suggests new keywords, and plots their relative interest over time to help with keyword research, headline optimization, trend shifts, and more.")
 
         st.text_input(
-            "Please enter the password", type="password", on_change=password_entered, key="password"
+            "Please enter your password", type="password", on_change=password_entered, key="password"
         )
         return False
     elif not st.session_state["password_correct"]:
@@ -39,7 +39,7 @@ def check_password():
         st.subheader("Welcome to Project T I D E")
         st.write("TIDE helps automate Google Trends analysis, making it much easier and efficient. It returns data for requested keywords, suggests new keywords, and plots their relative interest over time to help with keyword research, headline optimization, trend shifts, and more.")
         st.text_input(
-            "Please enter the password", type="password", on_change=password_entered, key="password"
+            "Please enter your password", type="password", on_change=password_entered, key="password"
         )
         st.error("😕 Password incorrect")
         return False
