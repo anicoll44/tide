@@ -187,7 +187,7 @@ if check_password():
         #Get Google News for each item in list
         for item in gnews_list:
             try:
-                googlenews.clear()
+                #googlenews.clear()
                 googlenews.search(item)
                 result = googlenews.results()
                 temp_news_df = pd.DataFrame(result)
