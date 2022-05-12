@@ -7,6 +7,7 @@ import requests
 from datetime import datetime, date, time
 from GoogleNews import GoogleNews
 from PIL import Image
+import plotly
 
 
 #Set width of page to fullscreen
