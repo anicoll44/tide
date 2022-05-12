@@ -29,7 +29,7 @@ def check_password():
     if "password_correct" not in st.session_state:
         # First run, show input for password.
         st.subheader("Welcome to Project T I D E")
-        st.write("TIDE helps teams analyze Google Trends data at scale. It returns data for requested keywords, suggests new keywords, and plots their relative interest over time to help with keyword research, headline optimization, trend shifts, and more.")
+        st.write("TIDE helps automate Google Trends analysis, making it much easier and efficient. It returns data for requested keywords, suggests new keywords, and plots their relative interest over time to help with keyword research, headline optimization, trend shifts, and more.")
 
         st.text_input(
             "Please enter the password", type="password", on_change=password_entered, key="password"
@@ -38,7 +38,7 @@ def check_password():
     elif not st.session_state["password_correct"]:
         # Password not correct, show input + error.
         st.subheader("Welcome to Project T I D E")
-        st.write("TIDE helps teams analyze Google Trends data at scale. It returns data for requested keywords, suggests new keywords, and plots their relative interest over time to help with keyword research, headline optimization, trend shifts, and more.")
+        st.write("TIDE helps automate Google Trends analysis, making it much easier and efficient. It returns data for requested keywords, suggests new keywords, and plots their relative interest over time to help with keyword research, headline optimization, trend shifts, and more.")
         st.text_input(
             "Please enter the password", type="password", on_change=password_entered, key="password"
         )
