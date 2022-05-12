@@ -145,17 +145,8 @@ if check_password():
             
             st.write('')
             st.markdown('###### Rising Related Keywords')
-            #st.dataframe(data=rising_df)
-            fig, ax = plt.subplots()
-            #hide the axes
-            fig.patch.set_visible(False)
-            ax.axis('off')
-            ax.axis('tight')
-            table = ax.table(cellText=rising_df.values, colLabels=rising_df.columns, loc='center')
-            fig.tight_layout()
-            st.pyplot(fig)
+            st.dataframe(data=rising_df)
           
-        
         with col2:
             real_time_trends = pytrends.realtime_trending_searches(pn='US')
             real_time_trends = real_time_trends.drop('entityNames', axis = 1)
