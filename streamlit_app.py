@@ -197,4 +197,4 @@ if check_password():
         st.write('')   
         st.markdown('###### Related News')
         #st.dataframe(data=news_df, height=800)
-        st.write(news_df)
+        st.plotly_chart(news_df)
