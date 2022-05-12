@@ -196,6 +196,6 @@ if check_password():
         news_df = news_df.rename(columns={"title": "Title", "date": "Date", "link": "URL", "query": "Keyword"})
         st.write('')   
         st.markdown('###### Related News')
-        #st.dataframe(data=news_df, height=800)
+        st.dataframe(data=news_df, height=800)
         fig =  ff.create_table(news_df)
-        st.plotly_chart(fig, use_container_width=True,height_constant=40,  )
+        st.plotly_chart(fig, use_container_width=True,height_constant=30)
