@@ -146,6 +146,8 @@ if check_password():
             st.write('')
             st.markdown('###### Rising Related Keywords')
             st.dataframe(data=rising_df)
+            #fig =  ff.create_table(rising_df)
+            st.plotly_chart(fig, use_container_width=True,height_constant=30)
           
         with col2:
             real_time_trends = pytrends.realtime_trending_searches(pn='US')
@@ -169,9 +171,7 @@ if check_password():
             
             st.write('')
             st.markdown('###### Daily Search Trends (US)')
-            #st.dataframe(data=trending_df)
-            fig =  ff.create_table(trending_df)
-            st.plotly_chart(fig, use_container_width=True,height_constant=30)
+            st.dataframe(data=trending_df)
     
         #Get Google News Data
         googlenews = GoogleNews()
@@ -203,5 +203,3 @@ if check_password():
         st.write('')   
         st.markdown('###### Related News')
         st.dataframe(data=news_df, height=800)
-        fig =  ff.create_table(news_df)
-        st.plotly_chart(fig, use_container_width=True,height_constant=30)
