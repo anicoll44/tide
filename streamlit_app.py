@@ -158,6 +158,7 @@ if check_password():
             
             st.write('')                                           
             st.markdown('###### Realtime Search Trends (US)')
+            st.experimental_show(real_time_trends)
             with st.expander("See explanation"):
                 #st.dataframe(data=real_time_trends)
                 fig =  ff.create_table(real_time_trends)
