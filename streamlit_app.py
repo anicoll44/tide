@@ -167,7 +167,7 @@ if check_password():
             st.markdown('###### Realtime Search Trends (US)')
             #st.dataframe(data=real_time_trends)
             fig =  ff.create_table(real_time_trends)
-            st.plotly_chart(fig, use_container_width=True,height_constant=30)
+            st.plotly_chart(fig, use_container_width=True,height_constant=30, height=300)
 
         with col3:
             trending_df = pytrends.trending_searches(pn='united_states')
