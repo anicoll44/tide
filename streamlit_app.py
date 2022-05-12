@@ -8,6 +8,7 @@ from datetime import datetime, date, time
 from GoogleNews import GoogleNews
 from PIL import Image
 import plotly.figure_factory as ff
+import matplotlib.pyplot as plt
 
 #Set width of page to fullscreen
 st.set_page_config(page_title = 'Project TIDE', initial_sidebar_state = 'expanded', layout="wide", menu_items = {'About': 'Reach out to Andrew Nicoll on Slack'})
