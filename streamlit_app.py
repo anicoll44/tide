@@ -11,7 +11,7 @@ from PIL import Image
 
 #Set width of page to fullscreen
 st.set_page_config(page_title = 'Project TIDE', initial_sidebar_state = 'expanded', layout="wide", menu_items = {'About': 'Reach out to Andrew Nicoll on Slack'})
-image = Image.open('tide.png')
+image = Image.open('tide_dark.png')
 st.sidebar.image(image, width = 180)
 
 
