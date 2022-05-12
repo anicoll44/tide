@@ -7,8 +7,7 @@ import requests
 from datetime import datetime, date, time
 from GoogleNews import GoogleNews
 from PIL import Image
-import plotly
-
+import plotly.figure_factory as ff
 
 #Set width of page to fullscreen
 st.set_page_config(page_title = 'Project TIDE', initial_sidebar_state = 'expanded', layout="wide", menu_items = {'About': 'Reach out to Andrew Nicoll on Slack'})
@@ -198,4 +197,5 @@ if check_password():
         st.write('')   
         st.markdown('###### Related News')
         #st.dataframe(data=news_df, height=800)
-        st.dataframe(data=news_df)
+        fig =  ff.create_table(news_df)
+        fig.show()
