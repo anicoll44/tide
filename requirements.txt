@@ -5,3 +5,4 @@ requests
 pytrends
 GoogleNews
 plotly
+matplotlib
