@@ -7,8 +7,6 @@ import requests
 from datetime import datetime, date, time
 from GoogleNews import GoogleNews
 from PIL import Image
-import plotly.figure_factory as ff
-import matplotlib.pyplot as plt
 
 #Set width of page to fullscreen
 st.set_page_config(page_title = 'Project TIDE', initial_sidebar_state = 'expanded', layout="wide", menu_items = {'About': 'Reach out to Andrew Nicoll on Slack'})
@@ -146,8 +144,6 @@ if check_password():
             st.write('')
             st.markdown('###### Rising Related Keywords')
             st.dataframe(data=rising_df)
-            #fig =  ff.create_table(rising_df)
-            #st.plotly_chart(fig, use_container_width=True,height_constant=30)
           
         with col2:
             real_time_trends = pytrends.realtime_trending_searches(pn='US')
@@ -158,12 +154,7 @@ if check_password():
             
             st.write('')                                           
             st.markdown('###### Realtime Search Trends (US)')
-            st.experimental_show(real_time_trends)
             st.dataframe(real_time_trends)
-            with st.expander("See explanation"):
-                #st.dataframe(data=real_time_trends)
-                fig =  ff.create_table(real_time_trends)
-                st.plotly_chart(fig, use_container_width=True,height_constant=30)
 
         with col3:
             trending_df = pytrends.trending_searches(pn='united_states')
