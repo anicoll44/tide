@@ -198,4 +198,4 @@ if check_password():
         st.markdown('###### Related News')
         #st.dataframe(data=news_df, height=800)
         fig =  ff.create_table(news_df)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig)
