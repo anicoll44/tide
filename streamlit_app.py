@@ -196,4 +196,5 @@ if check_password():
         news_df = news_df.rename(columns={"title": "Title", "date": "Date", "link": "URL", "query": "Keyword"})
         st.write('')   
         st.markdown('###### Related News')
-        st.dataframe(data=news_df, height=800)
+        #st.dataframe(data=news_df, height=800)
+        st.write(news_df)
