@@ -147,7 +147,7 @@ if check_password():
             st.markdown('###### Rising Related Keywords')
             st.dataframe(data=rising_df)
             #fig =  ff.create_table(rising_df)
-            st.plotly_chart(fig, use_container_width=True,height_constant=30)
+            #st.plotly_chart(fig, use_container_width=True,height_constant=30)
           
         with col2:
             real_time_trends = pytrends.realtime_trending_searches(pn='US')
