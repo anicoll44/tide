@@ -7,6 +7,7 @@ import requests
 from datetime import datetime, date, time
 from GoogleNews import GoogleNews
 from PIL import Image
+pip install --upgrade --user git+https://github.com/GeneralMills/pytrends
 
 #Set width of page to fullscreen
 st.set_page_config(page_title = 'Project TIDE', initial_sidebar_state = 'expanded', layout="wide", menu_items = {'About': 'Reach out to Andrew Nicoll on Slack'})
@@ -112,7 +113,7 @@ if check_password():
 
     #Get Google trends data
     if get_data_button:
-        pytrends = TrendReq()
+        pytrends = TrendReq(hl='en-US', tz=360, timeout=(10,25), proxies=['https://34.203.233.13:80',], retries=2, backoff_factor=0.1, requests_args={'verify':False})
         pytrends.build_payload(kw_list, cat=0, timeframe = timeframe, geo = 'US')
 
         #get top related queries for provided keyword
