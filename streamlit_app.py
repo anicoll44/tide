@@ -7,7 +7,6 @@ import requests
 from datetime import datetime, date, time
 from GoogleNews import GoogleNews
 from PIL import Image
-pip install --upgrade --user git+https://github.com/GeneralMills/pytrends
 
 #Set width of page to fullscreen
 st.set_page_config(page_title = 'Project TIDE', initial_sidebar_state = 'expanded', layout="wide", menu_items = {'About': 'Reach out to Andrew Nicoll on Slack'})
@@ -106,7 +105,7 @@ if check_password():
     number_of_related_queries = st.sidebar.slider('# of Related Keywords', min_value=0, max_value=4, value=4, help='The number of top related keywords to return and compare against your target keyword')
 
     #Select number of related news
-    number_of_related_news = st.sidebar.slider('# of Related News Articles', min_value=0, max_value=5, value= 2, help='The number of top keywords to return related news for')
+    #number_of_related_news = st.sidebar.slider('# of Related News Articles', min_value=0, max_value=5, value= 2, help='The number of top keywords to return related news for')
 
     #Button to trigger getting google trends data
     get_data_button = st.sidebar.button('Get Google Trends Data')
@@ -168,32 +167,32 @@ if check_password():
             st.dataframe(data=trending_df)
     
         #Get Google News Data
-        googlenews = GoogleNews()
+        #googlenews = GoogleNews()
     
         #Create df to load news data
-        news_df = pd.DataFrame(columns=['title', 'media',	'date',	'datetime',	'desc',	'link',	'img', 'query'])
+        #news_df = pd.DataFrame(columns=['title', 'media',	'date',	'datetime',	'desc',	'link',	'img', 'query'])
 
         #Create list of uniquq tracked keywords and related queries
-        gnews_list = kw_list + top_rising_list + trending_list + real_time_list
-        gset = set(gnews_list)
-        gnews_list = gset
+        #gnews_list = kw_list + top_rising_list + trending_list + real_time_list
+        #gset = set(gnews_list)
+        #gnews_list = gset
 
         #Get Google News for each item in list
-        for item in gnews_list:
-            try:
-                googlenews.clear()
-                googlenews.search(item)
-                result = googlenews.results()
-                temp_news_df = pd.DataFrame(result)
-                temp_news_df['query'] = item
-                news_df = news_df.append(temp_news_df, ignore_index=True)
-            except requests.exceptions.Timeout:
-                st.write('Timeout occured, please try again')
+        #for item in gnews_list:
+            #try:
+                #googlenews.clear()
+                #googlenews.search(item)
+                #result = googlenews.results()
+                #temp_news_df = pd.DataFrame(result)
+                #temp_news_df['query'] = item
+                #news_df = news_df.append(temp_news_df, ignore_index=True)
+            #except requests.exceptions.Timeout:
+                #st.write('Timeout occured, please try again')
     
         #Cleanup and show news df
-        news_df = news_df.drop_duplicates()
-        news_df = news_df.drop(columns=['img','media','datetime','desc'])
-        news_df = news_df.rename(columns={"title": "Title", "date": "Date", "link": "URL", "query": "Keyword"})
-        st.write('')   
-        st.markdown('###### Related News')
+        #news_df = news_df.drop_duplicates()
+        #news_df = news_df.drop(columns=['img','media','datetime','desc'])
+        #news_df = news_df.rename(columns={"title": "Title", "date": "Date", "link": "URL", "query": "Keyword"})
+        #st.write('')   
+        #st.markdown('###### Related News')
         st.dataframe(data=news_df, height=800)
