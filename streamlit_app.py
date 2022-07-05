@@ -112,7 +112,7 @@ if check_password():
 
     #Get Google trends data
     if get_data_button:
-        pytrends = TrendReq(proxies=['https://34.127.33.101','https://35.230.127.150', 'https://34.127.0.121', 'https://35.230.58.211', 'https://34.127.88.74', 'https://35.230.56.30'])
+        pytrends = TrendReq()
         pytrends.build_payload(kw_list, cat=0, timeframe = timeframe, geo = 'US')
 
         #get top related queries for provided keyword
