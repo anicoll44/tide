@@ -6,4 +6,4 @@ pytrends
 GoogleNews
 plotly
 matplotlib
---upgrade --user git+https://github.com/GeneralMills/pytrends
+pip install --upgrade --user git+https://github.com/GeneralMills/pytrends
