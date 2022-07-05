@@ -6,4 +6,4 @@ pytrends
 GoogleNews
 plotly
 matplotlib
-pytrends --upgrade
+upgrade pytrends
