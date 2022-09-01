@@ -3,7 +3,3 @@ pandas
 numpy
 requests
 pytrends
---upgrade --user git+https://github.com/GeneralMills/pytrends
-GoogleNews
-plotly
-matplotlib
