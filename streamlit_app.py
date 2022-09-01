@@ -139,7 +139,7 @@ if check_password():
             rising_df = list(related_queries.values())[0]['rising']
             rising_df = rising_df.reset_index(drop=True)
             rising_df = rising_df.rename(columns={"query": "Keyword", "value": "% Increase"})
-            top_rising_list = rising_df['Keyword'].head(number_of_related_news).tolist()
+            #top_rising_list = rising_df['Keyword'].head(number_of_related_news).tolist()
             
             st.write('')
             st.markdown('###### Rising Related Keywords')
@@ -150,7 +150,7 @@ if check_password():
             real_time_trends = real_time_trends.drop('entityNames', axis = 1)
             real_time_trends = real_time_trends.rename(columns={"title": "Topic"})
             #real_time_trends['Rank'] = real_time_trends.index + 1
-            real_time_list = real_time_trends['Topic'].head(number_of_related_news).tolist()
+            #real_time_list = real_time_trends['Topic'].head(number_of_related_news).tolist()
             
             st.write('')                                           
             st.markdown('###### Realtime Search Trends (US)')
@@ -160,7 +160,7 @@ if check_password():
             trending_df = pytrends.trending_searches(pn='united_states')
             trending_df = trending_df.rename(columns={0: "Keyword"})
             trending_df['Rank'] = trending_df.index + 1
-            trending_list = trending_df['Keyword'].head(number_of_related_news).tolist()
+            #trending_list = trending_df['Keyword'].head(number_of_related_news).tolist()
             
             st.write('')
             st.markdown('###### Daily Search Trends (US)')
