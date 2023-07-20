@@ -110,9 +110,15 @@ if check_password():
     #Button to trigger getting google trends data
     get_data_button = st.sidebar.button('Get Google Trends Data')
 
+    #get NID Cookie
+    session = requests.Session()
+    session.get('https://trends.google.com')
+    cookies_map = session.cookies.get_dict()
+    nid_cookie = cookies_map['NID']
+
     #Get Google trends data
     if get_data_button:
-        pytrends = TrendReq()
+        pytrends = TrendReq(hl='en-US', tz=360, retries=3, requests_args={'headers': {'Cookie': f'NID={nid_cookie}'}})
         pytrends.build_payload(kw_list, cat=0, timeframe = timeframe, geo = 'US')
 
         #get top related queries for provided keyword
